@@ -13,7 +13,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="grid grid-rows-[60px,1fr] h-screen">
+        <header className="bg-yellow-400 text-black font-semibold grid place-content-center">
+          HackerNews Reader
+        </header>
+        <main className="grid grid-cols-[320px,1fr] gap-4">
+          <aside>left bar</aside>
+          <section>{children}</section>
+        </main>
+      </body>
     </html>
   );
 }
