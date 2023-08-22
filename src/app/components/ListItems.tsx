@@ -6,6 +6,12 @@ export default async function ListItemsComponent({ id }: { id: number }) {
   );
 
   return (
-    <li className="truncate leading-[64px] px-4">{post.title || post.by}</li>
+    <div className="truncate h-[64px] px-4">
+      {post.title}
+      <div className="flex justify-between leading-normal text-sm text-slate-300">
+        <p>{post.by}</p>
+        <p>Visit site</p>
+      </div>
+    </div>
   );
 }

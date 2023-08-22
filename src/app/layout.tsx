@@ -2,6 +2,10 @@ import Link from "next/link";
 import { ListItems } from "./components";
 import "./globals.css";
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import ListSuspense from "./components/listSuspense";
+import HeaderComponent from "./components/header";
+import FooterComponent from "./components/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,21 +29,22 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="grid grid-rows-[60px,1fr] h-screen">
-        <header className="bg-yellow-400 text-black font-semibold grid place-content-center">
-          HackerNews Reader
-        </header>
+        <HeaderComponent />
         <main className="grid grid-cols-[320px,1fr] gap-4">
           <aside>
-            <ul>
+            <ul className="mt-8">
               {posts.map((id) => (
                 <Link href={`/${id}`} key={id}>
-                  <ListItems id={id} />
+                  <Suspense fallback={<ListSuspense />}>
+                    <ListItems id={id} />
+                  </Suspense>
                 </Link>
               ))}
             </ul>
           </aside>
           <section>{children}</section>
         </main>
+        <FooterComponent />
       </body>
     </html>
   );
