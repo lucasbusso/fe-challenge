@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { ListItems } from "./components";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import ListSuspense from "./components/listSuspense";
-import HeaderComponent from "./components/header";
-import FooterComponent from "./components/footer";
+
+import { Footer, Header, ListItems, ListSuspense } from "./components/index";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,7 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="grid grid-rows-[60px,1fr] h-screen">
-        <HeaderComponent />
+        <Header />
         <main className="grid grid-cols-[320px,1fr] gap-4">
           <aside>
             <ul className="mt-8">
@@ -44,7 +42,7 @@ export default async function RootLayout({
           </aside>
           <section>{children}</section>
         </main>
-        <FooterComponent />
+        <Footer />
       </body>
     </html>
   );
